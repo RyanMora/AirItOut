@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux';
 
-import SessionReducer from './session_reducer';
 import PlacesReducer from './places_reducer';
+import FiltersReducer from './filters_reducer';
+import SessionReducer from './session_reducer';
 
 const RootReducer = combineReducers({
-  session: SessionReducer,
-  places: PlacesReducer
+  places: PlacesReducer,
+  filters: FiltersReducer,
+  session: SessionReducer
 });
 
 export default RootReducer;

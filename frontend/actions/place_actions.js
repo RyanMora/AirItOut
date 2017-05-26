@@ -1,8 +1,18 @@
-import * as APIUtil from '../util/place_api_util';
+import * as APIUtil from '../util/place_api_util'
 
 export const RECEIVE_PLACES = 'RECEIVE_PLACES';
 export const RECEIVE_PLACE = 'RECEIVE_PLACE';
 export const RECEIVE_REVIEW = 'RECEIVE_REVIEW';
+
+export const receivePlaces = places => ({
+  type: RECEIVE_PLACES,
+  places
+});
+
+export const receivePlace = place => ({
+  type: RECEIVE_PLACE,
+  place
+});
 
 export const receiveReview = review => ({
   type: RECEIVE_REVIEW,
@@ -15,23 +25,13 @@ export const createReview = review => dispatch => (
   ))
 );
 
-export const receivePlaces = places => ({
-  type: RECEIVE_PLACES,
-  places
-});
-
-export const receivePlace = place => ({
-  type: RECEIVE_PLACE,
-  place
-});
-
 export const fetchPlaces = filters => dispatch => (
   APIUtil.fetchPlaces(filters).then(places => (
     dispatch(receivePlaces(places))
   ))
 );
 
-export const fetchPlace = id => dispatch (
+export const fetchPlace = id => dispatch => (
   APIUtil.fetchPlace(id).then(place => (
     dispatch(receivePlace(place))
   ))

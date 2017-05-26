@@ -8,7 +8,7 @@ class PlaceForm extends React.Component{
     this.state = {
       description: '',
       picture_url: '',
-      type_of_business
+      type_of_business: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.navigateToSearch = this.navigateToSearch.bind(this);
@@ -59,6 +59,13 @@ class PlaceForm extends React.Component{
               onChange={this.update('description')}
             />
 
+          <label>Type of Business</label>
+            <input
+              type="text"
+              value={type_of_business}
+              onChange={this.update('type_of_business')}
+            />
+
             <label>Latitude</label>
             <input
               type="text"
@@ -74,14 +81,16 @@ class PlaceForm extends React.Component{
             />
 
             <div className="button-holder">
-              <button onClick={this.handleCloudinary}>
+              <button
+                onClick={this.handleCloudinary}
+              >
                 Add image
               </button>
             </div>
 
             <hr />
 
-            <div>
+            <div className="button-holder">
               <input
                 type="submit"
                 value="Create Place"
@@ -89,8 +98,10 @@ class PlaceForm extends React.Component{
             </div>
           </form>
 
-          <div>
-            <button onClick={this.navigateToSearch}>
+          <div className="button-holder">
+            <button
+              onClick={this.navigateToSearch}
+            >
               Cancel
             </button>
           </div>

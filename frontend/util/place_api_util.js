@@ -13,6 +13,14 @@ export const fetchPlace = id => (
   })
 );
 
+export const createReview = data => (
+  $.ajax({
+    method: 'POST',
+    url: 'api/reviews',
+    data
+  })
+);
+
 export const createPlace = data => (
   $.ajax({
     method: 'POST',

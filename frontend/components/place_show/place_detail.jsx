@@ -1,6 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+import ReviewShow from './review_show';
+
+const reviewList = (reviews = []) => (
+  reviews.map(review => (
+    <ReviewShow
+      rating={review.rating}
+      body={review.body}
+      key={review.id}
+    />
+  ))
+);
+
 const PlaceDetail = ({place}) => {
   return (
     <div>
@@ -14,7 +26,7 @@ const PlaceDetail = ({place}) => {
       <br/>
       <div>
         <h3>Reviews</h3>
-        <div>placeholder for reviews</div>
+        {reviewList(place.reviews)}
       </div>
     </div>
   );

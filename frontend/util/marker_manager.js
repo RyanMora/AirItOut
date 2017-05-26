@@ -1,4 +1,4 @@
-/* global google:false*/
+/* global google:false */
 
 class MarkerManager {
   constructor(map, handleClick){
@@ -9,7 +9,7 @@ class MarkerManager {
 
   updateMarkers(places){
     const placesObj = {};
-    places.forEach(place => placesObj[place.id] = place);
+    places.forEach(place => placesObj[place.id] = [place]);
 
     places
       .filter(place => !this.markers[place.id])
@@ -20,7 +20,7 @@ class MarkerManager {
       .forEach((placeId) => this.removeMarker(this.markers[placeId]))
   }
 
-  createMarkerFromPlace(place){
+  createMarkerFromPlace(place) {
     const position = new google.maps.LatLng(place.lat, place.lng);
     const marker = new google.maps.Marker({
       position,

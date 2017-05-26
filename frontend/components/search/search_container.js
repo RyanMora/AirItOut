@@ -6,7 +6,6 @@ import Search from './search';
 
 const mapStateToProps = state => ({
   places: asArray(state),
-  // minRating: state.filters.minRating
 });
 
 const mapDispatchToProps = dispatch => ({
