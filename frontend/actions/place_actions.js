@@ -2,6 +2,18 @@ import * as APIUtil from '../util/place_api_util';
 
 export const RECEIVE_PLACES = 'RECEIVE_PLACES';
 export const RECEIVE_PLACE = 'RECEIVE_PLACE';
+export const RECEIVE_REVIEW = 'RECEIVE_REVIEW';
+
+export const receiveReview = review => ({
+  type: RECEIVE_REVIEW,
+  review
+});
+
+export const createReview = review => dispatch => (
+  APIUtil.createReview(review).then(review => (
+    dispatch(receiveReview(review))
+  ))
+);
 
 export const receivePlaces = places => ({
   type: RECEIVE_PLACES,

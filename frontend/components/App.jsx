@@ -8,6 +8,9 @@ import {
   HashRouter
 } from 'react-router-dom';
 
+import SearchContainer from './search/search_container';
+import PlaceShowContainer from './place_show/place_show_container';
+import PlaceFormContainer from './place_form/place_form_container';
 import GreetingContainer from './greeting/greeting_container';
 import SessionFormContainer from './session_form/session_form_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
@@ -21,6 +24,9 @@ const App = () => (
     <Switch>
       <AuthRoute path="/login" component={SessionFormContainer}/>
       <AuthRoute path="/signup" component={SessionFormContainer}/>
+      <ProtectedRoute path="/places/new" component={PlaceFormContainer}/>
+      <Route path="/places/:placeId" component={PlaceShowContainer}/>
+      <Route exact path="/" component={SearchContainer}/>
     </Switch>
   </div>
 );
