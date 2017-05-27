@@ -1,6 +1,7 @@
-class Api::placeesController < ApplicationController
+class Api::PlacesController < ApplicationController
   def index
-    @places = Place.all
+    places = Place.all
+    @places = places.includes(:reviews, :favorite_users)
     render :index
   end
 
@@ -24,7 +25,7 @@ class Api::placeesController < ApplicationController
       :picture_url
     )
   end
-  # 
+  #
   # def bounds
   #   params[:bounds]
   # end
