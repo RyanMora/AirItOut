@@ -12,6 +12,11 @@ class ReviewForm extends React.Component {
     this.navigateToPlaceShow = this.navigateToPlaceShow.bind(this);
   }
 
+  navigateToPlaceShow(){
+    const url = `/places/${this.props.match.params.placeId}`
+    this.props.history.push(url);
+  }
+
   handleSubmit(e){
     e.preventDefault();
     const placeId = parseInt(this.props.match.params.placeId);
@@ -34,7 +39,8 @@ class ReviewForm extends React.Component {
           <br/>
           <input
             type="number"
-            value={this.update("rating")}
+            value={this.state.rating}
+            onChange={this.update("rating")}
             />
           <br/>
           <textarea

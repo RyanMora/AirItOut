@@ -6,11 +6,11 @@ class Api::PlacesController < ApplicationController
   end
 
   def show
-    @place = place.find(params[:id])
+    @place = Place.find(params[:id])
   end
 
   def create
-    @place = place.create!(place_params)
+    @place = Place.create!(place_params)
     render :show
   end
 
