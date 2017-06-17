@@ -23,10 +23,11 @@ const App = () => (
       // <GreetingContainer />
     <Switch>
       <AuthRoute path="/login" component={SessionFormContainer} />
+      <AuthRoute exact path="/" component={SessionFormContainer} />
       <AuthRoute path="/signup" component={SessionFormContainer} />
-      <ProtectedRoute path="/places/new" component={PlaceFormContainer} />
+      <Route path="/home" component={HomeContainer} />
+      <Route exact path="/places" component={SearchContainer} />
       <Route path="/places/:placeId" component={PlaceShowContainer} />
-      <Route exact path="/" component={SearchContainer} />
     </Switch>
   </div>
 );
