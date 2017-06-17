@@ -13,6 +13,7 @@ import SessionFormContainer from './session_form/session_form_container';
 import SearchContainer from './search/search_container';
 import PlaceShowContainer from './place_show/place_show_container';
 import PlaceFormContainer from './place_form/place_form_container';
+import HomeContainer from './home/home_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
