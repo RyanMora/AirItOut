@@ -16,13 +16,11 @@ import PlaceFormContainer from './place_form/place_form_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
-  <div>
-    <header>
-      <Link to="/" className="header-link">
-        <h1>Air it Out!</h1>
-      </Link>
-      <GreetingContainer />
-    </header>
+  <div id='main'>
+      // <Link to="/" className="header-link">
+      //   <h1>Air it Out!</h1>
+      // </Link>
+      // <GreetingContainer />
     <Switch>
       <AuthRoute path="/login" component={SessionFormContainer} />
       <AuthRoute path="/signup" component={SessionFormContainer} />
