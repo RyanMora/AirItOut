@@ -15,7 +15,7 @@ class Home extends React.Component {
         <div id="upperHomepage">
           <div id="quote">
             <h1>
-              Customers can talk shit about you on yelp.
+              You've all been ratted out on yelp.
 
               Here's your chance to get back at them!
             </h1>
