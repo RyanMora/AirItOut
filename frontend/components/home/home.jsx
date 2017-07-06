@@ -17,14 +17,14 @@ class Home extends React.Component {
         <div id="upperHomepage">
           <div id="quote">
             <h1>
-              Welcome to Zelp!
+              Air it out!
             </h1>
           </div>
 
         </div>
 
         <div id="midHomepage">
-          <h2 id="trending">Featured Restaurants</h2>
+          <h2 id="trending">Recent Businesses</h2>
         </div>
 
         <div id="lowerHomepage">
