@@ -26,8 +26,8 @@ class Header extends React.Component {
     return (
       <div id="header">
         <div id="headerLinks">
-          <Link id="homeLink" to="/home">Zelp</Link>
-          <a id="github" href="https://github.com/ryanmora/YelpClone">
+          <Link id="homeLink" to="/home">Air it Out!</Link>
+          <a id="github" href="https://github.com/ryanmora/AirItOut">
             <i className="fa fa-github" aria-hidden="true"></i>
           </a>
           <a href="https://www.linkedin.com/in/ryanmora/">
