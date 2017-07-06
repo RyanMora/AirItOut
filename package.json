@@ -1,5 +1,5 @@
 {
-  "name": "YelpClone",
+  "name": "AirItOut",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -18,15 +18,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RyanMora/YelpClone.git"
-  }, 
+    "url": "git+https://github.com/RyanMora/AirItOut.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/RyanMora/YelpClone/issues"
+    "url": "https://github.com/RyanMora/AirItOut/issues"
   },
-  "homepage": "https://github.com/RyanMora/YelpClone#readme",
+  "homepage": "https://github.com/RyanMora/AirItOut#readme",
   "dependencies": {
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
