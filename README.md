@@ -13,7 +13,7 @@ restaurants located within San Francisco, CA.
 
 Please see the [docs][docs] folder for a look at the design documentation.
 
-[docs]: https://github.com/ryanmora/YelpClone/tree/master/docs
+[docs]: https://github.com/ryanmora/AirItOut/tree/master/docs
 
 ## Features and Implementation
 

@@ -2,7 +2,7 @@ var path = require("path");
 
 module.exports = {
   context: __dirname,
-  entry: "./frontend/yelpClone.jsx",
+  entry: "./frontend/airItOut.jsx",
   output: {
     path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
     filename: "bundle.js"
@@ -23,4 +23,4 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx", "*"]
   }
-}; 
+};
