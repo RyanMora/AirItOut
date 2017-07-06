@@ -1,0 +1,46 @@
+#placeShow {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+}
+
+#placeShowInfo {
+  border-bottom: 1px dotted black;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  align-items: center;
+}
+
+#placeShowName {
+  font-size: 45px;
+  font-family: $sans;
+  letter-spacing: 1px;
+  margin: 30px 0 10px 0;
+}
+
+#placeInfo {
+  font-size: 20px;
+  font-family: $lato;
+  padding: 5px;
+}
+
+#placeShowInfo li:last-child {
+  margin-bottom: 15px;
+}
+
+#modal {
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-family: $sans;
+  color: white;
+  background-color: $wild;
+}
+
+#modal:hover {
+  opacity: 0.5;
+}

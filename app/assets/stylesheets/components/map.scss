@@ -1,0 +1,24 @@
+
+#mapPage {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+#map-container {
+  width: calc(100vw-10px);
+  height: calc(100vh - 53px);
+  background-color: blue;
+}
+
+#mapWindow {
+  text-align: center;
+  font-style: $lato;
+  font-size: 15px;
+}
+
+#mapShow-container {
+  width: 100%;
+  height: 350px;
+}

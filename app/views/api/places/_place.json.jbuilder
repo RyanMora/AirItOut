@@ -1,6 +1,13 @@
-json.extract! place, :id, :description, :lat, :lng,
-  :picture_url, :average_rating
-
-json.reviews do
-  json.partial! 'api/reviews/review', collection: place.reviews, as: :review
-end
+json.extract! place,
+  :id,
+  :name,
+  :address,
+  :city,
+  :state,
+  :zip,
+  :price,
+  :image_url,
+  :lat,
+  :lng,
+  :phone_number
+  

@@ -1,41 +1,30 @@
-/* global google:false */
+import { values } from 'lodash';
 
-class MarkerManager {
-  constructor(map, handleClick){
+export default class MarkerManager {
+  constructor(map) {
     this.map = map;
-    this.handleClick = handleClick;
     this.markers = {};
   }
 
-  updateMarkers(places){
+  updateMarkers(places) {
     const placesObj = {};
-    places.forEach(place => placesObj[place.id] = [place]);
+    let placesArr = values(places)
+    placesArr.forEach(place => placesObj[place.id] = place);
 
-    places
+    placesArr
       .filter(place => !this.markers[place.id])
-      .forEach(newPlace => this.createMarkerFromPlace(newPlace, this.handleClick))
-
-    Object.keys(this.markers)
-      .filter(placeId => !placesObj[placeId])
-      .forEach((placeId) => this.removeMarker(this.markers[placeId]))
+      .forEach(newPlace => this.createMarkerFromPlace(newPlace));
   }
 
-  createMarkerFromPlace(place) {
+  createMarkerFromPlace(place){
     const position = new google.maps.LatLng(place.lat, place.lng);
     const marker = new google.maps.Marker({
       position,
       map: this.map,
+      animation: google.maps.Animation.DROP,
       placeId: place.id
     });
 
-    marker.addListener('click', () => this.handleClick(place));
     this.markers[marker.placeId] = marker;
   }
-
-  removeMarker(marker) {
-    this.markers[marker.placeId].setMap(null);
-    delete this.markers[marker.placeId];
-  }
 }
-
-export default MarkerManager;

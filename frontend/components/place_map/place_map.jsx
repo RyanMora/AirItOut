@@ -1,77 +1,76 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { withRouter } from 'react-router-dom';
-
 import MarkerManager from '../../util/marker_manager';
-
-const getCoordsObj = latLng => ({
-  lat: latLng.lat(),
-  lng: latLng.lng()
-});
+import { values } from 'lodash';
 
 const mapOptions = {
-  center: {
-    lat: 37.773972,
-    lng: -122.431297
-  }, // San Francisco coords
+  center: { lat: 37.7758, lng: -122.457},
   zoom: 13
 };
 
-class PlaceMap extends React.Component {
+class PlaceMap extends React.Component{
   componentDidMount() {
-    const map = this.refs.map;
-    this.map = new google.maps.Map(map, mapOptions);
-    this.MarkerManager = new MarkerManager(this.map, this.handleMarkerClick.bind(this));
-    if (this.props.singlePlace) {
-      this.props.fetchPlace(this.props.placeId);
-    } else {
-      this.registerListeners();
-      this.MarkerManager.updateMarkers(this.props.places);
-    }
+    this.renderMarkers();
+
+    this.showPlace = this.showPlace.bind(this);
+    this.renderMarkers = this.renderMarkers.bind(this);
   }
 
   componentDidUpdate() {
-    if (this.props.singlePlace) {
-      const targetPlaceKey = Object.keys(this.props.places)[0];
-      const targetPlace = this.props.places[targetPlaceKey];
-      this.MarkerManager.updateMarkers([targetPlace]); //grabs only that one place
-    } else {
-      this.MarkerManager.updateMarkers(this.props.places);
-    }
-  }
+    this.renderMarkers();
+    this.MarkerManager.updateMarkers(this.props.places);
 
-  registerListeners() {
-    google.maps.event.addListener(this.map, 'idle', () => {
-      const { north, south, east, west } = this.map.getBounds().toJSON();
-      const bounds = {
-        northEast: { lat:north, lng: east },
-        southWest: { lat: south, lng: west } };
-      this.props.updateFilter('bounds', bounds);
-    });
-    google.maps.event.addListener(this.map, 'click', (event) => {
-      const coords = getCoordsObj(event.latLng);
-      this.handleClick(coords);
+    const placeIds = Object.keys(this.props.places);
+    const markers = values(this.MarkerManager.markers);
+
+    markers.forEach(marker => {
+      this.showPlace(marker);
     });
   }
 
-  handleMarkerClick(place) {
-    this.props.history.push(`places/${place.id}`);
+  renderMarkers() {
+    this.map = new google.maps.Map(this.refs.map, mapOptions);
+    this.MarkerManager = new MarkerManager(this.map);
+    this.MarkerManager.updateMarkers(this.props.places);
   }
 
-  handleClick(coords) {
-    this.props.history.push({
-      pathname: 'places/new',
-      search: `lat=${coords.lat}&lng=${coords.lng}`
+  showPlace(marker) {
+    let placeId = marker.placeId;
+    let placeItem = this.props.places[placeId];
+
+    let content = "<div id='mapWindow'>" +
+      `<h1>${placeItem.name}</h1>` +
+      `<h2>${placeItem.address}, ${placeItem.city}, ${placeItem.state}, ${placeItem.zip}</h2>` +
+      "</div>";
+
+    const window = new google.maps.InfoWindow({
+      content: content,
+      maxWidth: 200
+    });
+
+    marker.addListener('mouseover', () => {
+      window.open(this.map, marker);
+    });
+
+    marker.addListener('mouseout', () => {
+      window.close(this.map, marker);
+    });
+
+    let mapDiv = document.getElementById(placeId);
+
+    google.maps.event.addDomListener(mapDiv, 'mouseover', () => {
+      window.open(this.map, marker);
+    });
+
+    google.maps.event.addDomListener(mapDiv, 'mouseout', () => {
+      window.close(this.map, marker);
     });
   }
 
   render() {
-    return (
-      <div className="map" ref="map">
-        Map
-      </div>
+    return(
+      <div id="map-container" ref="map"></div>
     );
   }
 }
 
-export default withRouter(PlaceMap);
+export default PlaceMap;

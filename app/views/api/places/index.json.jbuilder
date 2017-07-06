@@ -3,3 +3,4 @@
     json.partial! 'place', place: place
   end
 end
+ 

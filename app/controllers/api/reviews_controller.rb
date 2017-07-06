@@ -32,5 +32,5 @@ class Api::ReviewsController < ApplicationController
     params.require(:review).permit(:place_id, :user_id,
                                   :review_text, :rating, :photo_url )
   end
-
+  
 end

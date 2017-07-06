@@ -1,5 +1,6 @@
 import React from 'react';
 
+import HeaderContainer from '../header/header_container';
 import HomeIndex from './home_index';
 import { Redirect } from 'react-router-dom';
 
@@ -11,20 +12,19 @@ class Home extends React.Component {
   render() {
     return (
       <div id="homepage">
+        <HeaderContainer {...this.props}/>
 
         <div id="upperHomepage">
           <div id="quote">
             <h1>
-              You've all been ratted out on yelp.
-
-              Here's your chance to get back at them!
+              Welcome to Zelp!
             </h1>
           </div>
 
         </div>
 
         <div id="midHomepage">
-          <h2 id="trending">Featured Shitty Customers</h2>
+          <h2 id="trending">Featured Restaurants</h2>
         </div>
 
         <div id="lowerHomepage">

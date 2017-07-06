@@ -1,30 +1,14 @@
-export const fetchPlaces = data => (
-  $.ajax({
-    method: 'GET',
-    url: 'api/places',
-    data
-  })
-);
-
-export const fetchPlace = id => (
-  $.ajax({
-    method: 'GET',
+export const fetchPlace = id => {
+  return $.ajax({
+    method: "GET",
     url: `api/places/${id}`
-  })
-);
+  });
+};
 
-export const createReview = data => (
-  $.ajax({
-    method: 'POST',
-    url: 'api/reviews',
-    data
-  })
-);
-
-export const createPlace = data => (
-  $.ajax({
-    method: 'POST',
-    url: 'api/places',
-    data
-  })
-);
+export const fetchPlaces = (params) => {
+  return $.ajax({
+    method: "GET",
+    url: "api/places",
+    data: params
+  });
+};

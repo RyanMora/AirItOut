@@ -19,5 +19,5 @@ class Api::PlacesController < ApplicationController
     @place = Place.find(params[:id])
     render :show
   end
-
+  
 end

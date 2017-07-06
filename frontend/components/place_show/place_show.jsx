@@ -1,42 +1,47 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-import PlaceDetail from './place_detail';
-import PlaceMap from '../place_map/place_map';
-import ReviewFormContainer from './review_form_container';
-import { ProtectedRoute } from '../../util/route_util';
-import { ReviewLink } from '../../util/link_util';
+import HeaderContainer from '../header/header_container';
+import PlaceShowMap from '../place_map/place_show_map';
+import ReviewIndexContainer from '../reviews/review_index_container';
 
-const PlaceShow = ({ place, placeId, fetchPlace }) => {
-  const places = {
-    [placeId]: place
-  };
+const PRICES = { 1:"$", 2:"$$", 3:"$$$", 4:"$$$$"};
 
-  return(
-    <div>
-      <div>
-        <Link to="/">Back to Places Index</Link>
-        <PlaceMap
-          places={places}
-          placeId={placeId}
-          singlePlace={true}
-          fetchPlace={fetchPlace}
-        />
-      </div>
-      <div>
-        <PlaceDetail place={place} />
-        <ReviewLink
-          component={ReviewFormContainer}
-          to={`/places/${placeId}/review`}
-          label="Leave a Review"
-        />
-        <ProtectedRoute
-          path="/places/:placeId/review"
-          component={ReviewFormContainer}
-        />
-      </div>
-    </div>
-  );
-};
+class PlaceShow extends React.Component{
+  constructor(props) {
+    super(props);
+  }
+
+  componentWillMount() {
+    let {placeId} = this.props;
+    this.props.fetchPlace(placeId);
+    this.props.fetchReviews(placeId);
+  }
+
+  render() {
+    let {
+      name, address, city, state,
+      zip, price, phone_number} = this.props.place;
+    let reviews = this.props.reviews;
+
+    if (this.props.place === undefined) {
+        return <h1>loading</h1>;
+    } else {
+      return (
+        <div id="placeShow">
+          <HeaderContainer {...this.props} />
+          <PlaceShowMap place={this.props.place} />
+          <ul id="placeShowInfo">
+            <li id="placeShowName">{name}</li>
+            <li id="placeInfo">{address}, {city}, {state}, {zip}</li>
+            <li id="placeInfo">{reviews.length} Reviews || {PRICES[price]}</li>
+            <li id="placeInfo">{phone_number}</li>
+          </ul>
+
+          <ReviewIndexContainer {...this.props}/>
+        </div>
+      );
+    }
+  }
+}
 
 export default PlaceShow;

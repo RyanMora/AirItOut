@@ -1,0 +1,56 @@
+#places {
+  height: 90%;
+  width: 30%;
+  position: absolute;
+  text-align: center;
+  z-index: 1;
+  overflow: scroll;
+  background-color: transparent;
+  top: 70px;
+  left: 13px;
+  border-radius: 5px;
+  box-shadow: 10px 5px 10px 0 #888888;
+  background: white;
+}
+
+#places::-webkit-scrollbar {
+  width: 0;
+}
+
+#place {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  padding-top: 15px;
+  border-bottom: 1px solid $abisso;
+  border-radius: 5px;
+  font-size: 20px;
+  font-style: $sans;
+  box-shadow: 10px 10px 10px 0 #888888;
+}
+
+#place img {
+  height: auto;
+  width: 90%;
+  margin: 20px auto;
+  border-radius: 5px;
+}
+
+#place:hover {
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+  transform: scale(1.05);
+}
+
+#priceFilter {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#priceFilter label {
+  width: 65px;
+  margin: 10px 0;
+  font-size: 20px;
+}

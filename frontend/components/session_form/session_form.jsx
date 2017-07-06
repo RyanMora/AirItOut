@@ -1,80 +1,100 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, Redirect, withRouter } from 'react-router-dom';
+import ErrorsContainer from '../errors/errors_container';
 
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
-      password: ''
+      username: "",
+      password: "",
     };
+
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.guestLogIn = this.guestLogIn.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if(nextProps.loggedIn){
-      this.props.history.push('/');
-    }
+  componentWillUpdate() {
+    this.props.clearErrors();
   }
 
-  update(field){
+  update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
     });
   }
 
-  handleSubmit(e){
+  handleSubmit(e) {
     e.preventDefault();
-    const user = Object.assign({}, this.state);
-    this.props.processForm({user});
-  }
-
-  navLink(){
-    if(this.props.formType === 'login'){
-      return <Link to="/signup">sign up instead</Link>;
-    }else{
-      return <Link to="/login">log in instead</Link>;
+    const user = this.state;
+    if (this.props.formType === "login") {
+      this.props.login(user);
+    } else {
+      this.props.signup(user);
     }
   }
 
-  renderErrors(){
-    return(
-      <ul>
-        {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
-            {error}
-          </li>
-        ))}
-      </ul>
-    );
+  navLink() {
+    if (this.props.formType === 'login') {
+      return <Link to='/signup'>{"Become a Zelper"}</Link>;
+    } else {
+      return <Link to='/login'>{"Already a Zelper?"}</Link>;
+    }
+  }
+
+  guestLogIn(e) {
+    e.preventDefault();
+    let user = { username:"guest", password:"password" };
+    this.props.login(user);
   }
 
   render() {
+    let header;
+    let submit;
+
+    if (this.props.formType === 'login'){
+      header = "Log In";
+      submit = "Log In";
+    } else {
+      header = "Become a Zelper";
+      submit = "Sign Up";
+    }
+
     return(
-      <div>
-        <form onSubmit={this.handleSubmit}>Welcome to Air it Out!
-          <br/>
-          Please {this.props.formType} or {this.navLink()}
-          {this.renderErrors()}
-          <div>
-            <br/>
-            <label>Username:
+      <div id="login">
+        <div id="welcomeHeader">
+          <h1 id="headerLogin">Zelp</h1>
+          <h2 id="description"> - Find great food in your area!</h2>
+        </div>
+
+        <div id="session-form">
+          <h1 id="form">{header}</h1>
+
+          <div id="errors">{<ErrorsContainer />}</div>
+          <form onSubmit={this.handleSubmit}>
+            <div id="login-form">
+              <label>Username</label>
+
               <input type="text"
                 value={this.state.username}
                 onChange={this.update('username')}
-                />
-            </label>
-            <br/>
-            <label>Password:
+              />
+
+              <label>Password</label>
+
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
-                />
-            </label>
-            <br/>
-            <input type="submit" value="Submit"/>
-          </div>
-        </form>
+              />
+
+              <div id="buttons">
+                <button type="submit">{submit}</button>
+                {this.navLink()}
+                <button onClick={this.guestLogIn}>Guest Log In</button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     );
   }

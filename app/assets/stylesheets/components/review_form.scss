@@ -1,0 +1,99 @@
+#reviewForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 70%;
+  margin: 0 auto;
+}
+
+#reviewForm textarea {
+  border: 2px solid black;
+  text-align: center;
+  letter-spacing: 1px;
+  min-height: 50px;
+}
+
+#reviewForm div {
+  padding: 7% 0;
+}
+
+#rating {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#imageLabels {
+  font-size: 25px;
+  margin: 15px;
+  font-style: $sans;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 1px;
+  color: $wild;
+}
+
+#reviewThoughts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5px;
+}
+
+#reviewForm input {
+  font-size: 20px;
+  padding: 5px;
+  background-color: $wild;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: white;
+  margin-top: 5px;
+  min-height: 20px;
+}
+
+#reviewForm input:hover {
+  cursor: pointer;
+}
+
+#reviewIndex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#reviewIndexTitle {
+  font-size: 30px;
+  padding: 15px;
+  font-family: $sans;
+  letter-spacing: 1px;
+}
+
+#reviewErrors {
+  font-size: 20px;
+  margin: 0 auto;
+}
+
+#reviewErrors li {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+#imageUpload {
+  font-size: 30px;
+  margin-top: 15px;
+}
+
+#imageUpload:hover {
+  opacity: 0.5;
+}
+
+#imageIcon {
+  font-size: 25px;
+  font-style: $sans;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 1px;
+  color: $wild;
+}

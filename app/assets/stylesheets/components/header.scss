@@ -1,0 +1,44 @@
+#header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px;
+
+  width: 97.555555%;
+  font-size: 150%;
+  font-family: $sans;
+  letter-spacing: 2px;
+
+  color: white;
+  background-color: $wild;
+}
+
+#header button {
+  margin-right: 30px;
+  font-size: 1.5em;
+}
+
+#homeLink {
+  margin: auto 0;
+  font-size: 150%;
+}
+
+#header button:hover{
+  cursor: pointer;
+  color: white;
+}
+
+#searchbarLabel {
+  padding-right: 10px;
+}
+
+#searchbarInput {
+  width: 210px;
+  margin-right: 5px;
+  border-bottom: 1px solid white;
+  font-size: 90%;
+}
+
+#headerLinks a {
+  padding-left: 18px;
+  font-size: 1.5em;
+}
