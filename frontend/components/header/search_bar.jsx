@@ -40,7 +40,7 @@ class SearchBar extends React.Component {
         <i className="fa fa-search"></i>
       </button>
       </form>
-  );
+    );
   }
 }
 
