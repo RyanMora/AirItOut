@@ -20,7 +20,6 @@ class Home extends React.Component {
               Air it out!
             </h1>
           </div>
-
         </div>
 
         <div id="midHomepage">
