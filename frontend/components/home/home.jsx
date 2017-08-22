@@ -12,6 +12,7 @@ class Home extends React.Component {
   render() {
     return (
       <div id="homepage">
+        
         <HeaderContainer {...this.props}/>
 
         <div id="upperHomepage">
